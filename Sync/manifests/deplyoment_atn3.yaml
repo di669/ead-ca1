@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: atn-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: atn
+  template:
+    metadata:
+      labels:
+        app: atn
+    spec:
+      containers:
+        - name: atn
+          image: emmabarrett/allthenews:v4
+          args: ["news", "http://nf-service:8888", "weather", "http://wf-service:8888", "sports", "https://europe-west1-ca-1-275618.cloudfunctions.net/lab4"]
+          ports:
+          - containerPort: 8080	  
+        - name: atn-redis
+          image: redis
+          ports:
+          - containerPort: 6379
+
