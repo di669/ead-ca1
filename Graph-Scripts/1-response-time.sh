@@ -23,8 +23,8 @@ do
 done
 
 #Get averages
-aveg_async=$(echo "scale=6; $sum_async/$rep" | bc -l)
-aveg_sync=$(echo "scale=6; $sum_sync/$rep" | bc -l)
+aveg_async=$(echo "scale=3; $sum_async/$rep" | bc -l)
+aveg_sync=$(echo "scale=3; $sum_sync/$rep" | bc -l)
 
 #Filename
 timestamp=$(date +%d-%m-%Y_%H-%M-%S)
